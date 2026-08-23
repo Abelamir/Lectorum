@@ -76,9 +76,23 @@ class DatabaseManager:
       return cursor.lastrowid
 
   def insertar_materia(self, nombre):
-    return self.insertar(
-        tabla="materias", columnas=["nombre"], valores=[nombre]
-    )
+        """Busca una materia por nombre; si existe devuelve su ID, si no la crea."""
+        # 1. Buscar si la materia ya existe (sin importar mayúsculas/minúsculas)
+        with self._get_connection() as conexion:
+          cursor = conexion.cursor()
+          cursor.execute(
+              "SELECT id FROM materias WHERE LOWER(nombre) = LOWER(?)", (nombre,)
+          )
+          resultado = cursor.fetchone()
+
+          # Si ya existe, devolvemos su ID actual
+          if resultado:
+            return resultado[0]
+
+        # 2. Si no existe, la insertamos como nueva
+        return self.insertar(
+            tabla="materias", columnas=["nombre"], valores=[nombre]
+        )
 
   # Ajustado a los nombres de columna reales de la tabla
   def insertar_unidad_conocimiento(
@@ -103,3 +117,11 @@ class DatabaseManager:
         columnas=["unidad_id", "recurso_id"],
         valores=[unidad_id, recurso_id],
     )
+
+  def eliminar_recurso(self, recurso_id):
+      """Elimina un recurso por su ID."""
+      sql = "DELETE FROM recursos WHERE id = ?"
+      with self._get_connection() as conn:  # Corregido: _get_connection()
+        cursor = conn.cursor()
+        cursor.execute(sql, (recurso_id,))
+        conn.commit()
