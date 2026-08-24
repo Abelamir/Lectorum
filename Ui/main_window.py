@@ -14,7 +14,7 @@ class MainWindow(ctk.CTk):
         super().__init__()
 
         # 1. Configuración de la Ventana Principal
-        self.title("Gestor de Conocimiento y Recursos")
+        self.title("Lectorum - Gestor de Conocimiento")
         self.geometry("950x600")
         self.minsize(800, 500)
 
@@ -40,7 +40,7 @@ class MainWindow(ctk.CTk):
 
         self.logo_label = ctk.CTkLabel(
             self.sidebar_frame,
-            text="📚 Gestor BD",
+            text="📚 Lectorum",
             font=ctk.CTkFont(size=20, weight="bold")
         )
         self.logo_label.pack(padx=20, pady=(20, 10))
