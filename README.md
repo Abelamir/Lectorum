@@ -1,10 +1,3 @@
-Está **casi perfecto**, pero hay dos pequeños detalles de formato en la sección de instalación y al final del archivo que se pueden corregir para que Markdown los muestre impecables:
-
-1. **Bloques de código sin cerrar:** En los pasos 2 y 3 de instalación faltan las comillas triples (```) de cierre.
-2. **Formato del enlace:** En el comando `git clone` conviene usar solo la URL limpia sin corchetes de Markdown.
-
----
-
 ### **README.md (Versión Corregida)**
 
 ```markdown
