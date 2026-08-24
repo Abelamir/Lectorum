@@ -1,4 +1,4 @@
-### **README.md (Versión Corregida)**
+### **README.md**
 
 ```markdown
 # 📚 Lectorum - Gestor de Conocimiento y Recursos
@@ -64,7 +64,5 @@ Lectorum/
     ├── __init__.py
     ├── components.py # Tarjetas de recursos y ventanas modales
     └── main_window.py# Ventana principal y barra de búsqueda
-
-```
 
 ```
